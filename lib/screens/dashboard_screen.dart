@@ -38,32 +38,33 @@ class _DashboardScreenState extends State<DashboardScreen> {
       await watchService.authorize();
     }
     
-    setState(() => _isLoading = true);
+    setState(() {
+      _isLoading = true;
+      _predictionResult = "Analiz ediliyor...";
+    });
     await watchService.fetchRecentData();
 
-    if (watchService.healthData.isNotEmpty) {
-      final mockPayload = {
-        "heart_rate_avg": 75,
-        "steps_total": 5000,
-        "data_points": watchService.healthData.length
-      };
+    // Gerçek HealthKit verileri yerine, modelin beklediği parametreleri gönderiyoruz.
+    // İleride watchService'ten gelen gerçek verilerle eşleştirilecek.
+    final mockPayload = {
+      "user_id": "zlife_ios_user",
+      "overall_sleep_score": 68,
+      "deep_sleep_in_minutes": 55,
+      "resting_heart_rate": 78,
+      "restlessness": 0.2
+    };
 
-      final result = await apiService.sendDataForPrediction(mockPayload);
-      
-      setState(() {
-        if (result != null) {
-          _predictionResult = "Analysis Result: ${result['prediction']}";
-        } else {
-          _predictionResult = "Error communicating with API.";
-        }
-      });
-    } else {
-      setState(() {
-         _predictionResult = "No Watch data found in HealthKit.";
-      });
-    }
-
-    setState(() => _isLoading = false);
+    final result = await apiService.sendDataForPrediction(mockPayload);
+    
+    setState(() {
+      if (result != null && result.containsKey('fatigue_score')) {
+        final score = result['fatigue_score'].toString();
+        _predictionResult = "$score|5";
+      } else {
+        _predictionResult = "Sunucuya bağlanılamadı veya hatalı yanıt alındı.";
+      }
+      _isLoading = false;
+    });
   }
 
   Widget _buildHomeTab() {
@@ -481,6 +482,82 @@ class _DashboardScreenState extends State<DashboardScreen> {
             ],
           ),
         ),
+        const SizedBox(height: 25),
+
+        // Analiz Başlat Butonu
+        ElevatedButton(
+          style: ElevatedButton.styleFrom(
+            padding: const EdgeInsets.symmetric(vertical: 16),
+            backgroundColor: Colors.blueAccent,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(15),
+            ),
+          ),
+          onPressed: _isLoading ? null : _analyzeData,
+          child: _isLoading
+              ? const SizedBox(
+                  width: 24, height: 24, 
+                  child: CircularProgressIndicator(color: Colors.white, strokeWidth: 3))
+              : const Text('Yapay Zeka Analizini Başlat', style: TextStyle(fontSize: 18, color: Colors.white, fontWeight: FontWeight.bold)),
+        ),
+        const SizedBox(height: 25),
+
+        // Yorgunluk Skoru Gösterimi ve Bar Doldurma Mantığı
+        if (_predictionResult != "No analysis yet")
+          Container(
+            padding: const EdgeInsets.all(20),
+            decoration: BoxDecoration(
+              color: const Color(0xFF1C1C1E),
+              borderRadius: BorderRadius.circular(20),
+              border: Border.all(color: Colors.blueAccent.withOpacity(0.3), width: 1),
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                if (_predictionResult.contains('|5')) ...[
+                  const Text('KİŞİSEL YORGUNLUK SKORU', style: TextStyle(fontSize: 14, letterSpacing: 2, color: Colors.blueAccent, fontWeight: FontWeight.bold)),
+                  const SizedBox(height: 5),
+                  const Text('Model sizin normalinizi öğrenerek kalibre ediliyor.', style: TextStyle(fontSize: 12, color: Colors.grey), textAlign: TextAlign.center),
+                  const SizedBox(height: 20),
+                  Stack(
+                    alignment: Alignment.center,
+                    children: [
+                      SizedBox(
+                        width: 140,
+                        height: 140,
+                        child: CircularProgressIndicator(
+                          value: double.parse(_predictionResult.split('|')[0]) / 5.0,
+                          strokeWidth: 15,
+                          backgroundColor: Colors.grey.shade900,
+                          color: Colors.blueAccent,
+                          strokeCap: StrokeCap.round,
+                        ),
+                      ),
+                      Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Text(
+                            _predictionResult.split('|')[0],
+                            style: const TextStyle(fontSize: 42, fontWeight: FontWeight.bold, color: Colors.white),
+                          ),
+                          const Text(
+                            '/ 5',
+                            style: TextStyle(fontSize: 16, color: Colors.grey, fontWeight: FontWeight.bold),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ] else ...[
+                  Text(
+                    _predictionResult,
+                    style: const TextStyle(fontSize: 16, color: Colors.white, height: 1.5),
+                  ),
+                ],
+              ],
+            ),
+          ),
+        
         const SizedBox(height: 25),
 
         // Mock Graph 1: Uyku Skoru
