@@ -9,9 +9,12 @@ Zlife, akıllı saatlerden gelen verileri (uyku, nabız) analiz ederek gerçek z
 - **Veritabanı:** Supabase
 
 ## Veri Seti Referansı (Dataset Citation)
-Bu projenin Makine Öğrenimi modeli, açık kaynaklı **PMData** veri seti kullanılarak eğitilmiştir. Araştırma ekibine bilime yaptıkları bu açık kaynaklı katkıdan dolayı teşekkür ederiz.
+Bu projenin Makine Öğrenimi modeli, açık kaynaklı **PMData** veri seti kullanılarak eğitilmiştir. Araştırma ekibine bilime yaptıkları bu açık kaynaklı katkıdan dolayı teşekkür ederiz. Veri seti doğrudan Kaggle üzerinden projeye entegre edilmiştir.
 
-**Citation:**
+**Kaggle Linki:**
+> [PMData - A sports logging dataset (Kaggle)](https://www.kaggle.com/datasets/vlbthambawita/pmdata-a-sports-logging-dataset)
+
+**Akademik Referans (Citation):**
 > Thambawita, V., Hicks, S.A., Borgli, H., et al. PMData: a sports logging dataset. *Sci Data 7*, 231 (2020). 
 > [https://doi.org/10.1038/s41597-020-00573-0](https://doi.org/10.1038/s41597-020-00573-0)
 
