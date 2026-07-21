@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="https://images.unsplash.com/photo-1550831107-1553da8c8464?q=80&w=1200&auto=format&fit=crop" alt="Zlife Banner" width="100%">
+  <img src="banner.png" alt="Zlife Banner" width="100%">
   
   <h1>🌟 Zlife - AI Powered Life Coach</h1>
   <p><strong>Transforming smartwatch data into personalized, real-time life coaching using Machine Learning and Groq Llama-3.</strong></p>
