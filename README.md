@@ -103,4 +103,4 @@ Bu projenin Makine Öğrenimi modeli, P. Thambawita ve ekibi tarafından yayınl
 
 - **Kaggle Linki:** [PMData - A sports logging dataset](https://www.kaggle.com/datasets/vlbthambawita/pmdata-a-sports-logging-dataset)
 - **Akademik Referans (Citation):**
-> Thambawita, V., Hicks, S.A., Borgli, H., et al. PMData: a sports logging dataset. *Sci Data 7*, 231 (2020). [https://doi.org/10.1038/s41597-020-00573-0](https://doi.org/10.1038/s41597-020-00573-0)
+> Thambawita, V., et al. "PMData: a sports logging dataset." *Proceedings of the 11th ACM Multimedia Systems Conference*. 2020. [https://doi.org/10.1145/3339825.3394926](https://doi.org/10.1145/3339825.3394926)
