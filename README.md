@@ -28,3 +28,24 @@ graph LR
     D -->|Tavsiye| E[Mobil Uygulama]
     B -->|Log| F[(Supabase)]
 ```
+
+## 📊 Veri Seti Referansı (Dataset Citation)
+Bu projenin Makine Öğrenimi modeli, açık kaynaklı **PMData** veri seti kullanılarak eğitilmiştir (1480 günlük Ground Truth verisi). Araştırma ekibine bilime yaptıkları bu katkıdan dolayı teşekkür ederiz.
+
+**Kaggle Linki:**
+> [PMData - A sports logging dataset (Kaggle)](https://www.kaggle.com/datasets/vlbthambawita/pmdata-a-sports-logging-dataset)
+
+**Akademik Referans (Citation):**
+> Thambawita, V., Hicks, S.A., Borgli, H., et al. PMData: a sports logging dataset. *Sci Data 7*, 231 (2020). 
+> [https://doi.org/10.1038/s41597-020-00573-0](https://doi.org/10.1038/s41597-020-00573-0)
+
+## 🚀 Kurulum (Installation)
+1. Repoyu klonlayın:
+   ```bash
+   git clone https://github.com/Kayra-ML/Zlife.git
+   cd Zlife/backend
+   ```
+2. Bağımlılıkları yükleyin:
+   ```bash
+   pip install -r requirements.txt
+   ```
