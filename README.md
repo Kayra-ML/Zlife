@@ -49,3 +49,29 @@ Bu projenin Makine Öğrenimi modeli, açık kaynaklı **PMData** veri seti kull
    ```bash
    pip install -r requirements.txt
    ```
+
+## 🔒 Çevre Değişkenleri (.env)
+Projenin çalışması için gereken API anahtarları `.gitignore` kuralı gereği GitHub'a yüklenmez. 
+`backend/.env.example` dosyasını kopyalayarak `backend/.env` dosyası oluşturun:
+```env
+GROQ_API_KEY=your_groq_api_key_here
+SUPABASE_URL=your_supabase_url_here
+SUPABASE_KEY=your_supabase_anon_key_here
+```
+
+## ⚡ API Kullanımı
+Sunucuyu başlatmak için:
+```bash
+uvicorn main:app --reload
+```
+**Endpoint:** `POST /api/health-data`
+```json
+{
+  "user_id": "macbook_flutter_01",
+  "overall_sleep_score": 45,
+  "deep_sleep_in_minutes": 15,
+  "resting_heart_rate": 85,
+  "restlessness": 0.25,
+  "timestamp": "2026-07-21T10:00:00Z"
+}
+```
