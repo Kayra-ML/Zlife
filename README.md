@@ -1,22 +1,15 @@
-# Zlife - AI Powered Life Coach
+<div align="center">
+  <img src="https://images.unsplash.com/photo-1550831107-1553da8c8464?q=80&w=1200&auto=format&fit=crop" alt="Zlife Banner" width="100%">
+  
+  <h1>🌟 Zlife - AI Powered Life Coach</h1>
+  <p><strong>Transforming smartwatch data into personalized, real-time life coaching using Machine Learning and Groq Llama-3.</strong></p>
 
-Zlife, akıllı saatlerden gelen verileri (uyku, nabız) analiz ederek gerçek zamanlı klinik yorgunluk skoru (1-5) hesaplayan ve Groq (Llama-3.1) Yapay Zekası aracılığıyla kişiselleştirilmiş motivasyon mesajları üreten bir yaşam koçu arka uç (backend) sistemidir.
+  [![FastAPI](https://img.shields.io/badge/FastAPI-005571?style=for-the-badge&logo=fastapi)](https://fastapi.tiangolo.com/)
+  [![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
+  [![Groq](https://img.shields.io/badge/Groq-f55036?style=for-the-badge&logo=groq&logoColor=white)](https://groq.com/)
+  [![Scikit-Learn](https://img.shields.io/badge/scikit--learn-%23F7931E.svg?style=for-the-badge&logo=scikit-learn&logoColor=white)](https://scikit-learn.org/)
+</div>
 
-## Mimari
-- **API Çatısı:** FastAPI
-- **Makine Öğrenimi (Sol Lob):** Random Forest Regressor (Gözetimli Öğrenme)
-- **Dil Modeli (Sağ Lob):** Groq Llama-3.1-8b-instant
-- **Veritabanı:** Supabase
+<br>
 
-## Veri Seti Referansı (Dataset Citation)
-Bu projenin Makine Öğrenimi modeli, açık kaynaklı **PMData** veri seti kullanılarak eğitilmiştir. Araştırma ekibine bilime yaptıkları bu açık kaynaklı katkıdan dolayı teşekkür ederiz. Veri seti doğrudan Kaggle üzerinden projeye entegre edilmiştir.
-
-**Kaggle Linki:**
-> [PMData - A sports logging dataset (Kaggle)](https://www.kaggle.com/datasets/vlbthambawita/pmdata-a-sports-logging-dataset)
-
-**Akademik Referans (Citation):**
-> Thambawita, V., Hicks, S.A., Borgli, H., et al. PMData: a sports logging dataset. *Sci Data 7*, 231 (2020). 
-> [https://doi.org/10.1038/s41597-020-00573-0](https://doi.org/10.1038/s41597-020-00573-0)
-
-## Güvenlik
-Projenin çalışması için gereken API anahtarları (`GROQ_API_KEY`, `SUPABASE_KEY`) `.gitignore` kuralı gereği GitHub'a yüklenmez. Projeyi kendi bilgisayarınızda çalıştırmak için `backend/.env.example` dosyasını kopyalayarak `backend/.env` dosyası oluşturmalı ve içine kendi şifrelerinizi girmelisiniz.
+Zlife, akıllı saatlerden gelen verileri (uyku, nabız, hareketlilik) analiz ederek gerçek zamanlı **Klinik Yorgunluk Skoru (1-5)** hesaplayan ve **Groq (Llama-3.1)** Yapay Zekası aracılığıyla kişiselleştirilmiş motivasyon mesajları üreten akıllı bir arka uç (backend) sistemidir.
