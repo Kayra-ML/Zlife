@@ -13,3 +13,18 @@
 <br>
 
 Zlife, akıllı saatlerden gelen verileri (uyku, nabız, hareketlilik) analiz ederek gerçek zamanlı **Klinik Yorgunluk Skoru (1-5)** hesaplayan ve **Groq (Llama-3.1)** Yapay Zekası aracılığıyla kişiselleştirilmiş motivasyon mesajları üreten akıllı bir arka uç (backend) sistemidir.
+
+## 🧠 Sistem Mimarisi (Architecture)
+Zlife, iki farklı beynin (Sol Lob ve Sağ Lob) birleşimiyle çalışır:
+
+1. **Sol Lob (Analitik Zeka):** `Random Forest Regressor` (Gözetimli Öğrenme). Saat verilerini analiz edip yorgunluk skorunu çıkarır.
+2. **Sağ Lob (İletişim Zekası):** `Groq Llama-3.1-8b-instant`. Çıkan sayısal skoru alıp kullanıcıya şefkatli bir yaşam koçu gibi seslenir.
+
+```mermaid
+graph LR
+    A[Akıllı Saat] -->|Nabız, Uyku| B(FastAPI)
+    B --> C{Random Forest}
+    C -->|Skor: 1.84| D[Groq Llama-3.1]
+    D -->|Tavsiye| E[Mobil Uygulama]
+    B -->|Log| F[(Supabase)]
+```
